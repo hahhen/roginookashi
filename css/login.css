@@ -1,0 +1,49 @@
+*{
+    font-family: A-OTF SHIN GO PRO, Inter;
+    font-weight: 300;
+    color: #8a3055 !important;
+}
+
+.loginContainer{
+    width: 40%;
+    border: 1px solid #8a3055;
+    border-radius: 20px;
+}
+
+.formDiv{
+    font-size: 13px;
+}
+
+.formR{
+    font-size: 13px !important;
+    padding: 10px !important;
+}
+
+.form-control:focus{
+    border-color: #8a3055 !important;
+    box-shadow: 0 0 0 0.15rem rgb(251,220,233) !important;
+}
+
+.form-check-input{
+    margin-top: 1px !important;
+}
+
+.form-check-input:checked{
+    border-color: #8a3055 !important;
+    background-color: #8a3055 !important;
+}
+
+.form-check-input:focus{
+    border-color: #8a3055 !important;
+    box-shadow: 0 0 0 0.15rem rgb(251,220,233) !important;
+}
+
+#btnEntrar{
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    font-weight: medium;
+    background-color: #8a3055;
+    color: white !important;
+    border: none;
+}
