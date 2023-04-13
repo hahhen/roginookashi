@@ -18,3 +18,7 @@
     font-weight: normal;
     src: local('A-OTF Shin Go Pro M'), url('AOTFShinGoProMedium.woff') format('woff');
     }
+
+h1, h2, h3, h4, h5{
+    font-family: "Shin Go M", Arial, Helvetica, sans-serif;
+}

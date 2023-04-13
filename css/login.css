@@ -1,11 +1,7 @@
 *{
     font-family: "Shin Go L", Arial, Helvetica, sans-serif;
     font-weight: normal;
-    color: #8a3055 !important;
-}
-
-h2{
-    font-family: "Shin Go M", Arial, Helvetica, sans-serif;
+    color: #a02c55 !important;
 }
 
 .loginContainer{
@@ -24,8 +20,8 @@ h2{
 }
 
 .form-control:focus{
-    border-color: #8a3055 !important;
-    box-shadow: 0 0 0 0.15rem rgb(251,220,233) !important;
+    border-color: #a02c55 !important;
+    box-shadow: 0 0 0 0.15rem #ffddea !important;
 }
 
 .form-check-input{
@@ -33,13 +29,13 @@ h2{
 }
 
 .form-check-input:checked{
-    border-color: #8a3055 !important;
-    background-color: #8a3055 !important;
+    border-color: #a02c55 !important;
+    background-color: #a02c55 !important;
 }
 
 .form-check-input:focus{
-    border-color: #8a3055 !important;
-    box-shadow: 0 0 0 0.15rem rgb(251,220,233) !important;
+    border-color: #a02c55 !important;
+    box-shadow: 0 0 0 0.15rem #ffddea !important;
 }
 
 #btnEntrar{
@@ -48,7 +44,7 @@ h2{
     padding: 13px;
     border-radius: 10px;
     font-weight: medium;
-    background-color: #8a3055;
+    background-color: #a02c55;
     color: white !important;
     border: none;
 }
