@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Shin Go R';
+    font-style: normal;
+    font-weight: normal;
+    src: local('A-OTF Shin Go Pro R'), url('AOTFShinGoProRegular.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Shin Go L';
+    font-style: normal;
+    font-weight: normal;
+    src: local('A-OTF Shin Go Pro L'), url('AOTFShinGoProLight.woff') format('woff');
+    }
+
+@font-face {
+    font-family: 'Shin Go M';
+    font-style: normal;
+    font-weight: normal;
+    src: local('A-OTF Shin Go Pro M'), url('AOTFShinGoProMedium.woff') format('woff');
+    }
