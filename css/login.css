@@ -1,7 +1,11 @@
 *{
-    font-family: "Shin Go L", "Inter", Arial, Helvetica, sans-serif;
+    font-family: "Shin Go L", Arial, Helvetica, sans-serif;
     font-weight: normal;
     color: #8a3055 !important;
+}
+
+h2{
+    font-family: "Shin Go M", Arial, Helvetica, sans-serif;
 }
 
 .loginContainer{
@@ -39,6 +43,7 @@
 }
 
 #btnEntrar{
+    font-family: "Shin Go R", Arial, Helvetica, sans-serif;
     width: 100%;
     padding: 13px;
     border-radius: 10px;
