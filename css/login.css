@@ -14,6 +14,17 @@
     font-size: 13px;
 }
 
+#btnRegistrar{
+    font-family: "Shin Go R", Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    background-color: #a02c55;
+    color: white !important;
+    border: none;
+    display: none ;
+}
+
 .formR{
     font-size: 13px !important;
     padding: 10px !important;
@@ -43,8 +54,13 @@
     width: 100%;
     padding: 13px;
     border-radius: 10px;
-    font-weight: medium;
     background-color: #a02c55;
     color: white !important;
+    display: block;
     border: none;
+}
+
+#cadastroToggle{
+    cursor: pointer;
+    user-select: none;
 }

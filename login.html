@@ -35,12 +35,19 @@
     <form>
         <section class="d-flex justify-content-center"> 
             <div class="loginContainer mt-5 ">
+              <div id="outErro" class="mb-2 bg-danger bg-opacity-25 rounded-3 p-3 border border-danger" style="width: 100%;">
+                  <span id="outErroText" class="text-danger"></span>
+              </div>
                 <div class="loginTit mb-5">
                     <h2>Login</h2>
                     <span>Insira os dados de sua conta</span>
                 </div>
+                <div id="divNome" class="formDiv flex-column mb-4">
+                  <label class="mb-1">Nome</label>
+                  <input type="text" name="inNome" id="inNome" class="formR form-control">
+              </div>
                 <div class="formDiv d-flex flex-column mb-4">
-                    <label class="mb-1">E-mail ou usuário</label>
+                    <label class="mb-1">E-mail</label>
                     <input type="text" name="inEmail" id="inEmail" class="formR form-control">
                 </div>
                 <div class="formDiv d-flex flex-column mb-2">
@@ -48,19 +55,247 @@
                     <input type="password" name="inSenha" id="inSenha" class="formR form-control">
                 </div>
                 <div class="apiDiv mb-3">
-                    <a href="#"><img src="img/gLogo.png" alt="Entrar com Google" width="18px"></a>
-                    <a href="#"><img src="img/fbLogo.webp" alt="Entrar com Facebook" width="18px"></a>
-                    <a href="#"><img src="img/apLogo.png" alt="Entrar com Apple" width="18px"></a>
+                    <a id="google" href="#"><img src="img/gLogo.png" alt="Entrar com Google" width="18px"></a>
+                    <a id="fb" href="#"><img src="img/fbLogo.webp" alt="Entrar com Facebook" width="18px"></a>
+                    <a id="apple" href="#"><img src="img/apLogo.png" alt="Entrar com Apple" width="18px"></a>
                 </div>
                 <div class="formDiv d-flex align-items-center mb-5">
                     <input type="checkbox" name="inManter" class="form-check-input" id="inManter">
                     <label class="ms-1">Mantenha-me conectado</label>
                 </div>
-                <div class="entrarDiv d-flex justify-content-center">
-                    <input id="btnEntrar" type="submit" value="Entrar">
+                <div class="entrarDiv d-flex flex-column justify-content-center">
+                    <input id="btnEntrar" type="button" value="Entrar">
+                    <input id="btnRegistrar" type="button" value="Registrar">
+                    <label id="cadastroToggle" class="text-center mt-2">Ou cadastre-se</label>
                 </div>
+                
+              <div class="entrarDiv d-flex justify-content-center">
+                <input id="btnSair" type="button" value="Sair">
+            </div>
             </div>
         </section>
     </form>
 </body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  import { getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, FacebookAuthProvider, signInWithPopup, GoogleAuthProvider}from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyClbeYWlsKsWVAC1QQf8K9W22kNrjTMzng",
+    authDomain: "roginookashi.firebaseapp.com",
+    projectId: "roginookashi",
+    storageBucket: "roginookashi.appspot.com",
+    messagingSenderId: "76735896471",
+    appId: "1:76735896471:web:5df7cfee5a41411dae02d2",
+    measurementId: "G-CRCX9RJ6DX"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const database = getDatabase(app);
+  const auth = getAuth();
+  const providerf = new FacebookAuthProvider();
+  const providerg = new GoogleAuthProvider();
+
+  //GOOGLE
+
+  google.addEventListener('click',(e)=>{
+    signInWithPopup(auth, providerg)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage)
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+  })
+
+  fb.addEventListener('click',(e)=>{
+    signInWithPopup(auth, providerf)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
+
+      // ...
+    });
+  }) 
+
+
+
+  btnRegistrar.addEventListener('click',(e) => {
+    var email = document.getElementById('inEmail').value
+    var password = document.getElementById('inSenha').value
+    var nome = document.getElementById('inNome').value
+    createUserWithEmailAndPassword(auth, email, password)
+ 
+    
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      window.location.replace("index.html")
+      var dt = new Date()
+      set(ref(database, 'usuarios/' + user.uid),{
+        nome: nome,
+        email: email,
+        criado_em: dt
+      })
+
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage)
+      // ..
+    });
+  });
+
+  btnEntrar.addEventListener('click',(e)=>{
+    var email = document.getElementById('inEmail').value
+    var password = document.getElementById('inSenha').value
+    
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      var dt2 = new Date()
+
+      update(ref(database, 'usuarios/' + user.uid),{
+        ultimo_login: dt2
+      })
+      window.location.replace("index.html")
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage)
+    });
+  })
+
+  const user = auth.currentUser;
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+
+  btnSair.addEventListener('click',(e)=>{
+    signOut(auth).then(() => {
+    alert("Saido")
+    window.location.replace("login.html")
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+    alert(error.message)
+  });
+  })
+
+</script>
+
+<script>
+
+  outErroText = document.getElementById('outErroText').textContent
+  if (outErroText == "") {
+    document.getElementById("outErro").style.display = "none"
+  }else{
+    document.getElementById("outErro").style.display = "block"
+  }
+
+
+  cadastroT = document.getElementById("cadastroToggle")
+  botaoL = document.getElementById('btnEntrar')
+  botaoL.style.display == "block"
+  botaoR = document.getElementById('btnRegistrar')
+  divnome = document.getElementById('divNome')
+  divnome.style.display = "none"
+  i=0
+  
+  cadastroT.addEventListener('click', (e)=>{
+    for(i;i<=1;i++){
+      botaoR.style.display = "none"
+      divnome.style.display = "none"
+      botaoL.style.display = "block"
+      cadastroT.textContent = "Ou cadastre-se"
+    }
+    if(botaoL.style.display == "block"){
+      divnome.style.display = "flex"
+      botaoL.style.display = "none"
+      botaoR.style.display = "block"
+      cadastroT.textContent = "Ou fazer login"
+    }
+    else{
+      botaoR.style.display = "none"
+      divnome.style.display = "none"
+      botaoL.style.display = "block"
+      cadastroT.textContent = "Ou cadastre-se"
+    }
+  })
+</script>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 </html>
