@@ -62,15 +62,11 @@
                     <input type="checkbox" name="inManter" class="form-check-input" id="inManter">
                     <label class="ms-1">Mantenha-me conectado</label>
                 </div>
-                <div class="entrarDiv d-flex flex-column justify-content-center">
+                <div class="mb-3 entrarDiv d-flex flex-column justify-content-center">
                     <input id="btnEntrar" type="button" value="Entrar">
                     <input id="btnRegistrar" type="button" value="Registrar">
                     <label id="cadastroToggle" class="text-center mt-2">Ou cadastre-se</label>
                 </div>
-                
-              <div class="entrarDiv d-flex justify-content-center">
-                <input id="btnSair" type="button" value="Sair">
-            </div>
             </div>
         </section>
     </form>
@@ -223,18 +219,6 @@
       // ...
     }
   });
-
-  btnSair.addEventListener('click',(e)=>{
-    signOut(auth).then(() => {
-    alert("Saido")
-    window.location.replace("login.html")
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-    alert(error.message)
-  });
-  })
-
 </script>
 
 <script>
