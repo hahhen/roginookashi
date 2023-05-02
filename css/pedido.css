@@ -1,0 +1,94 @@
+*{
+    font-family: "Shin Go L", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    transition: 0.2s linear;
+    color: #a02c55 !important;
+}
+
+#ingredients-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff !important;
+    margin-bottom: 15px;
+}
+  
+.ingredient{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 40px;
+    background-color: #a02c55;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    margin-bottom: 2px;
+    border-radius: 3px;
+}
+label{
+    color: #fff !important;
+    margin-left: 5px;
+}.ingredient input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    position: relative;
+    margin-right: 10px;
+  }
+  
+  .ingredient input[type="checkbox"]:checked {
+    background-color: #2196F3;
+    border-color: #2196F3;
+  }
+  
+  .ingredient input[type="checkbox"]:checked:after {
+    content: "\2714";
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+#frango, #milho, #tomate, #maionese{
+    pointer-events: none;
+}
+
+.ingredient:nth-child(1), .ingredient:nth-child(2), .ingredient:nth-child(3), .ingredient:nth-child(4){
+    background-color: #701535;
+    opacity: 0.9;
+}
+.ingredient:nth-child(4){
+    margin-bottom: 10px;
+}
+.button{
+    border: none;
+    font-family: "Shin Go R", Arial, Helvetica, sans-serif;
+    width: 400px;
+    padding: 13px;
+    border-radius: 10px;
+    background-color: #a02c55;
+    color: white !important;
+}
+.button:hover{
+    background-color: #701535;
+}
+.realized{
+    display: none;
+    flex-direction: column;
+}
+.realized img{
+    width: 200px;
+    margin: 20px;
+}
+
+.nomeRequest{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

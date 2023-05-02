@@ -64,3 +64,13 @@
     cursor: pointer;
     user-select: none;
 }
+
+#btnPedido{
+    font-family: "Shin Go R", Arial, Helvetica, sans-serif;
+    width: 300px;
+    padding: 13px;
+    border-radius: 10px;
+    background-color: #a02c55;
+    color: white !important;
+    border: none;
+}

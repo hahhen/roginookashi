@@ -26,3 +26,35 @@
  user-select: none;
  cursor: pointer;
 }
+
+.logo{
+ border-radius: 100%;
+     width: 110px;
+     height: 110px;
+     background-color: transparent;
+    }
+    
+    .btn-send{
+     width: 200px;
+     height: 50px;
+     border: none;
+     background-color: #a02c55;
+     color: #fff !important;
+     border-radius: 25px;
+     font-family: "Shin Go L", Arial, Helvetica, sans-serif;
+     text-decoration: none;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    
+    }
+    
+    /* .borda{
+    
+     border: 1px solid black !important;
+    
+    } */
+    
+    .btn-send:hover{
+     background-color: #6e1836;
+    }
